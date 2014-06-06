@@ -1,0 +1,80 @@
+includeLibs.user_email2powermail_userfuncs = EXT:email2powermail/res/user_email2powermail_userfuncs.php
+
+# EMAIL2POWERMAIL PLUGIN #
+plugin.tx_email2powermail {
+
+	# Constants
+	allowedPages = {$plugin.tx_email2powermail.allowedPages}
+	disallow4Usergroup = {$plugin.tx_email2powermail.disallow4Usergroup}
+	disallow4User = {$plugin.tx_email2powermail.disallow4User}
+	cachetime = {$plugin.tx_email2powermail.cachetime}
+	
+	# Create new link
+	link = TEXT
+	link {
+		value = No Email available
+		typolink {
+			parameter = {$plugin.tx_email2powermail.formPID}
+			returnLast = url
+			additionalParams.cObject = COA
+			additionalParams.cObject {
+				10 = TEXT
+				10.wrap = &tx_email2powermail[uid]=|
+				10.field = uid
+			}
+			useCacheHash = 1
+		}
+	}
+	
+	# Create new linktext
+	text = TEXT
+	text {
+		#value = {$plugin.tx_email2powermail.text4emails}
+		value = 
+	}
+	
+	
+	
+	
+	# This object can be used to show the email in the powermail form (if wanted)
+	
+		# Get Email to current piVars from cachetable
+	getEmail = COA
+	getEmail {
+		10 = RECORDS
+		10 {
+			source.data = GP:tx_email2powermail|uid
+			tables = tx_email2powermail_emailcache
+			conf {
+				tx_email2powermail_emailcache = TEXT
+				tx_email2powermail_emailcache.field = email
+			}
+			dontCheckPid = 1
+		}
+	}
+	
+		# Replace @ with some extra html tags (to prevent email grabbing)
+	showEmail = COA
+	showEmail {
+		10 = USER
+		10.userFunc = user_email2powermail_userfuncs->replace
+		10.userFunc {
+			search = TEXT
+			search.value = @
+			replace = TEXT
+			replace.value = &copy;
+			replace.wrap = <span style="display: none;">noSpam</span>|<span style="display: none;">allowed</span>
+			content < plugin.tx_email2powermail.getEmail
+		}
+		wrap = Send email to:&nbsp;|
+	}
+	
+}
+
+# clear some objects if not needed
+[globalVar = GP:tx_email2powermail|uid > 0]
+	# do nothing
+[else]
+	plugin.tx_email2powermail.getEmail >
+	plugin.tx_email2powermail.showEmail >
+[end]

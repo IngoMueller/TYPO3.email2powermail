@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'email2powermail'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_email2powermail_emailcache">email2powermail Cache</label>
+			<label index="tx_email2powermail_emailcache.email">email</label>
+			<label index="tx_email2powermail_receivers">email2powermail Receiver Name</label>
+			<label index="tx_email2powermail_receivers.email">email</label>
+			<label index="tx_email2powermail_receivers.name">Receivername</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_email2powermail_emailcache">email2powermail cache</label>
+			<label index="tx_email2powermail_emailcache.email">E-Mail</label>
+			<label index="tx_email2powermail_receivers">email2powermail Empfängername</label>
+			<label index="tx_email2powermail_receivers.email">E-Mail</label>
+			<label index="tx_email2powermail_receivers.name">Empfängername</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,25 @@
+###
+# This are the default TS-constants for email2powermail
+##
+
+plugin.tx_email2powermail {
+	
+	# cat=plugin.email2powermail//0010; type=int; label= pid with form: Add pid where the powermail form is located (e.g. 25)
+	formPID = 1
+	
+	# cat=plugin.email2powermail//0020; type=text; label= text instead of email: Change Text in a tags of an email link if its an email. If empty, there is no manipulation (e.g. Send Email)
+	text4emails = Send Email
+	
+	# cat=plugin.email2powermail//0040; type=text; label= Allow in pages: Give email2powermail one or more pids in which it should be active - subpages are included. 0 deactivates rewriting (e.g. 1,2,3)
+	allowedPages = 1
+	
+	# cat=plugin.email2powermail//0040; type=text; label= Deaktivate for usergroups: Deaktivate rewriting for some FE user groups (e.g. 1,2,3)
+	disallow4Usergroup = 1,2,3,4,5,6
+	
+	# cat=plugin.email2powermail//0050; type=text; label= Deaktivate for users: Deaktivate rewriting for some FE users (e.g. 4,5,6)
+	disallow4User =
+	
+	# cat=plugin.email2powermail//0100; type=int; label= cachetime: Time when old db values should be renewed or deleted in seconds (e.g. 5184000 for 2 months)
+	cachetime = 5184000
+	
+}
