@@ -3,7 +3,7 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'files/static/', 'Main Settings');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Email 2 Powermail');
 
 $TCA['tx_email2powermail_emailcache'] = array (
 	'ctrl' => array (
@@ -14,8 +14,8 @@ $TCA['tx_email2powermail_emailcache'] = array (
 		'crdate'    => 'crdate',
 		'cruser_id' => 'cruser_id',
 		'default_sortby' => 'ORDER BY crdate',	
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'icon_tx_email2powermail_emailcache.gif',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/' . 'tx_email2powermail_emailcache.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'icon_tx_email2powermail_emailcache.gif',
 	),
 );
 
@@ -30,8 +30,8 @@ $TCA['tx_email2powermail_receivers'] = array (
 		'transOrigPointerField'    => 'l10n_parent',	
 		'transOrigDiffSourceField' => 'l10n_diffsource',
 		'default_sortby' => 'ORDER BY crdate',	
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'tca.php',
-		'iconfile'          => t3lib_extMgm::extRelPath($_EXTKEY) . 'icon_tx_email2powermail_receivers.gif',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/' . 'tx_email2powermail_receivers.php',
+		'iconfile'          => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'icon_tx_email2powermail_receivers.gif',
 	),
 );
 ?>
